@@ -4,20 +4,10 @@ import Axios from "axios";
 const OPENWETHER_API = Axios.create({
   baseURL: `https://api.openweathermap.org/data/2.5`,
   params: {
-    appid: import.meta.env.VITE_OPEN_WEATHER_API_KEY
+    appid: import.meta.env.VITE_OPEN_WEATHER_API_KEY,
+    units: "metric"
   }
 });
-OPENWETHER_API.interceptors.request.use((config) => {
-  return config;
-});
-OPENWETHER_API.interceptors.response.use(
-  (response) => {
-    return response;
-  },
-  (error) => {
-    console.error(error);
-  }
-);
 const GEO_API = Axios.create({
   baseURL: "https://wft-geo-db.p.rapidapi.com/v1/geo",
   headers: {
@@ -25,20 +15,16 @@ const GEO_API = Axios.create({
     'X-RapidAPI-Host': 'wft-geo-db.p.rapidapi.com'
   }
 });
-
-GEO_API.interceptors.request.use((config) => {
-  return config;
-});
-GEO_API.interceptors.response.use(
-  (response) => {
-    return response;
-  },
-  (error) => {
-    console.error(error);
+const LOCATIONIQ_API = Axios.create({
+  baseURL: "https://us1.locationiq.com/v1/reverse",
+  params: {
+    key: import.meta.env.VITE_LOCATIONIQ_API_KEY,
+    format: "json"
   }
-);
-const axios = {
+});
+
+export default {
   OPENWETHER_API,
-  GEO_API
-}
-export default axios;
+  GEO_API,
+  LOCATIONIQ_API
+};

@@ -19,3 +19,6 @@
 		height: 0;
 	}
 }
+body {
+	@apply bg-gradient-to-tr from-blue-500 to-primary remove-scroll-bar;
+}
