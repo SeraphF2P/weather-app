@@ -1,6 +1,6 @@
 import { useContext } from "react";
-import { Context } from "./CordinateContext";
+import { Context } from "./CoordinatesContext";
 
-export function useCordinateState() {
+export function useCoordinatesState() {
   return useContext(Context);
 }

@@ -1,5 +1,5 @@
-import { BsSearch, BsExclamationCircleFill } from "react-icons/bs";
+import { BsExclamationCircleFill, BsGlobe } from "react-icons/bs";
 export const Icon = {
-	search: BsSearch,
 	exclamation: BsExclamationCircleFill,
+	globe: BsGlobe,
 };

@@ -15,12 +15,9 @@ export const MyPlugin = plugin(
       },
     });
     addBase({
-      "*": {
-        " @apply border-border ": {},
-      },
 
       body: {
-        "@apply bg-neutral text-neutral-revert": {},
+        "@apply bg-gradient-to-tr from-blue-500 to-primary remove-scroll-bar": {},
         "font-feature-settings": '"rlig" 1, "calt" 1',
 
       },
@@ -66,19 +63,10 @@ export const MyPlugin = plugin(
         colors: {
           neutral: "rgb(var(--neutral),<alpha-value>)",
           "neutral-revert": "rgb(var(--neutral-revert),<alpha-value>)",
-          text: "rgb(var(--text),<alpha-value>)",
-          "text-revert": "rgb(var(--text-revert),<alpha-value>)",
           primary: "rgb(var(--primary),<alpha-value>)",
           variant: "rgb(var(--variant,0,0,0),<alpha-value>)",
           alert: "rgb(var(--alert),<alpha-value>)",
           success: "rgb(var(--success),<alpha-value>)",
-        },
-
-        boxShadow: {
-          overlay: "inset 0 0 200px 0 rgba(255,255,255,0)",
-        },
-        boxShadowColor: {
-          dynamic: "rgb(var(--theme-shadow),<alpha-value>)",
         },
         screens: {
           mn: "420px",
@@ -90,32 +78,15 @@ export const MyPlugin = plugin(
         gridAutoRows: {
           fluid: "repeat(auto-fit,minmax(0,1fr))",
         },
-        aspectRatio: {
-          square: "1",
-          "golden-w": "16/9",
-          "golden-h": "9/16",
-        },
         animation: {
-          reset: "reset var(--reset-duration) infinite var(--reset-delay)",
           fadein:
             "fadein var(--fadein-duration,0.3s) forwards  var(--fadein-delay,0s)",
           fadeout:
             "fadeout var(--fadeout-duration,0.3s) forwards var(--fadeout-delay,0s)",
-          buzz: "buzz 2s infinite linear  ",
           slideDown: "slideDown 0.3s forwards linear  ",
           slideUp: "slideUp 0.3s forwards linear  ",
         },
         keyframes: {
-          reset: {
-            "50%": {
-              transform:
-                "translate(0,0) rotate(0) skewX(0) skewY(0) scaleX(1) scaleY(1);",
-            },
-            "0%,100%": {
-              transform:
-                "translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));",
-            },
-          },
           fadein: {
             to: {
               opacity: "var(--fadein-opacity,1)",
@@ -130,31 +101,17 @@ export const MyPlugin = plugin(
                 "translate(var(--fade-translate-x,0) , var(--fade-translate-y,0)) rotate(var(--fade-rotate)) skewX(var(--fade-skew-x,0)) skewY(var(--fade-skew-y,0)) scaleX(var(--fade-scale-x,1)) scaleY(var(--fade-scale-y,1));",
             },
           },
-          buzz: {
-            "0%,20%,40%,60%,80%,100%": {
-              transform:
-                "rotate(0deg) ",
-            },
-            "10%,50%": {
-              transform:
-                "rotate(-12.5deg) ",
-            },
-            "30%,70%": {
-              transform:
-                "rotate(12.5deg)",
-            },
-          },
           slideDown: {
             from: {
               height: "0"
             },
             to: {
-              height: "var(--radix-collapsible-content-height)"
+              height: "var(--radix-accordion-content-height)"
             }
           }
           , slideUp: {
             from: {
-              height: "var(--radix-collapsible-content-height)"
+              height: "var(--radix-accordion-content-height)"
             },
             to: {
               height: "0"

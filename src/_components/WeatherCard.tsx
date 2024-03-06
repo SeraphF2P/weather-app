@@ -1,16 +1,12 @@
 import useSWR from "swr";
 import axiosClient from "../lib/axiosClient";
 import { PuffLoader } from "react-spinners";
+import { useCoordinatesState } from "../contexts/hooks";
+import { NoContent } from "../ui/NoContent";
 
-export const WeatherCard = ({
-	cityInfo,
-}: {
-	cityInfo: {
-		name: string;
-		latitude: number;
-		longitude: number;
-	};
-}) => {
+export const WeatherCard = () => {
+	const { cityInfo } = useCoordinatesState();
+
 	const fetcher = async (url: string) => {
 		return await axiosClient.OPENWETHER_API.get(url).then((res) => res.data);
 	};
@@ -18,8 +14,7 @@ export const WeatherCard = ({
 		cityInfo && `/weather?lat=${cityInfo.latitude}&lon=${cityInfo.longitude}`,
 		fetcher
 	);
-	console.log("weather", weather);
-	console.log("cityInfo", cityInfo);
+
 	return (
 		<div className=" relative bg-primary/30 space-y-2 backdrop-blur-md p-4 w-full   rounded-md shadow-md">
 			{isLoading ? (
@@ -66,6 +61,7 @@ export const WeatherCard = ({
 					</>
 				)
 			)}
+			{!isLoading && !weather && <NoContent />}
 		</div>
 	);
 };
